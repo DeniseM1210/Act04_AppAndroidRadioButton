@@ -7,117 +7,142 @@
     tools:context=".MainActivity">
 
     <EditText
-        android:id="@+id/editTextTextPersonName4"
+        android:id="@+id/cajaHexa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="37dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
-        tools:layout_editor_absoluteX="145dp"
-        tools:layout_editor_absoluteY="458dp" />
+        app:layout_constraintStart_toEndOf="@+id/checkBox_hexa"
+        app:layout_constraintTop_toBottomOf="@+id/cajaOctal" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/cajaOctal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="44dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
-        tools:layout_editor_absoluteX="145dp"
-        tools:layout_editor_absoluteY="377dp" />
+        app:layout_constraintStart_toEndOf="@+id/checkBox_octal"
+        app:layout_constraintTop_toBottomOf="@+id/cajaBinario" />
 
     <CheckBox
-        android:id="@+id/checkBox2"
+        android:id="@+id/checkBox_octal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="CheckBox"
-        tools:layout_editor_absoluteX="20dp"
-        tools:layout_editor_absoluteY="374dp" />
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="41dp"
+        android:onClick="onClick"
+        android:text="Octal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox_binario" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="178dp"
-        tools:layout_editor_absoluteY="42dp" />
+        android:layout_marginStart="156dp"
+        android:layout_marginTop="44dp"
+        android:text="Conversor"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <RadioGroup
+        android:id="@+id/radioGroup"
         android:layout_width="379dp"
         android:layout_height="78dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="14dp"
         android:orientation="horizontal"
-        tools:layout_editor_absoluteX="20dp"
-        tools:layout_editor_absoluteY="85dp">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/radio_decimal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="RadioButton" />
+            android:onClick="onClick"
+            android:text="Decimal" />
 
         <RadioButton
-            android:id="@+id/radioButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="RadioButton" />
-
-        <RadioButton
-            android:id="@+id/radioButton3"
+            android:id="@+id/radio_binario"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="RadioButton" />
+            android:onClick="onClick"
+            android:text="Binario" />
 
         <RadioButton
-            android:id="@+id/radioButton4"
+            android:id="@+id/radio_octal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="RadioButton" />
+            android:onClick="onClick"
+            android:text="Octal" />
+
+        <RadioButton
+            android:id="@+id/radio_hexa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onClick"
+            android:text="Hexadecimal" />
     </RadioGroup>
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="26dp"
-        tools:layout_editor_absoluteY="205dp" />
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="42dp"
+        android:text="Ingresa un número:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/caja_numero"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
-        tools:layout_editor_absoluteX="114dp"
-        tools:layout_editor_absoluteY="196dp" />
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     <CheckBox
-        android:id="@+id/checkBox"
+        android:id="@+id/checkBox_binario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="CheckBox"
-        tools:layout_editor_absoluteX="22dp"
-        tools:layout_editor_absoluteY="288dp" />
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="60dp"
+        android:onClick="onClick"
+        android:text="Binario"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <CheckBox
-        android:id="@+id/checkBox3"
+        android:id="@+id/checkBox_hexa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="CheckBox"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="455dp" />
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="33dp"
+        android:onClick="onClick"
+        android:text="Hexadecimal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox_octal" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/cajaBinario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="62dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
-        tools:layout_editor_absoluteX="145dp"
-        tools:layout_editor_absoluteY="286dp" />
+        app:layout_constraintStart_toEndOf="@+id/checkBox_binario"
+        app:layout_constraintTop_toBottomOf="@+id/caja_numero" />
 </androidx.constraintlayout.widget.ConstraintLayout>
