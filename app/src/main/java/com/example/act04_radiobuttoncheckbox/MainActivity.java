@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         radioD = findViewById(R.id.radio_decimal);
         radioB = findViewById(R.id.radio_binario);
         radioO = findViewById(R.id.radio_octal);
+        radioH = findViewById(R.id.radio_hexa);
 
         cbBin = findViewById(R.id.checkBox_binario);
         cbOct = findViewById(R.id.checkBox_octal);
@@ -33,13 +35,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         cajaBin = findViewById(R.id.cajaBinario);
         cajaOct = findViewById(R.id.cajaOctal);
         cajaHex = findViewById(R.id.cajaHexa);
+
     }
 
     @Override
     public void onClick(View v) {
         if(radioD.isChecked()){
             if(cbBin.isChecked()){
-                if(cajaNum.equals("")){
+                if(cajaNum.getText().equals("")){
                     Toast.makeText(this, "ERROR!", Toast.LENGTH_LONG).show();
                 }else{
                     cajaBin.setText(convertirDecimalaBinario());
@@ -56,8 +59,41 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 cajaHex.setText(convertirDecimalAHexadecimal(decimal));
             }
+        }else if(radioB.isChecked()){
+            if(cbBin.isChecked()) {
+                String valor = cajaNum.getText().toString();
+                int binario = Integer.parseInt(valor);
+                if(validarBinario(binario) == true){
+                    cajaBin.setText(valor);
+                }else{
+                    Toast.makeText(this, "ERROR! No es Binario", Toast.LENGTH_LONG).show();
+                }
+            }else if(cbOct.isChecked()){
+                String valor = cajaNum.getText().toString();
+                int binario = Integer.parseInt(valor);
+                if(validarBinario(binario) == true){
+                    cajaBin.setText(valor);
+                }else{
+                    Toast.makeText(this, "ERROR! No es Binario", Toast.LENGTH_LONG).show();
+                }
+            }
+
+
+
         }
 
+    }
+
+    public static boolean validarBinario(int binario) {
+        // Comprobar si solo se compone de unos y ceros
+        String binarioComoCadena = String.valueOf(binario);
+        for (int i = 0; i < binarioComoCadena.length(); i++) {
+            char caracter = binarioComoCadena.charAt(i);
+            if (caracter != '0' && caracter != '1') {
+                return false;
+            }
+        }
+        return true;
     }
 
     public String convertirDecimalaBinario(){
@@ -86,6 +122,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         return hexadecimal;
     }
+
+
 
 
 
