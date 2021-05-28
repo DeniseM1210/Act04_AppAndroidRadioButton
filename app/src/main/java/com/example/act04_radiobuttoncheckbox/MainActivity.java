@@ -45,7 +45,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if(cajaNum.getText().equals("")){
                     Toast.makeText(this, "ERROR!", Toast.LENGTH_LONG).show();
                 }else{
-                    cajaBin.setText(convertirDecimalaBinario());
+                    String valor = cajaNum.getText().toString();
+                    int decimal = Integer.parseInt(valor);
+                    cajaBin.setText(convertirDecimalABinario(decimal));
                 }
 
             }else if(cbOct.isChecked()){
@@ -92,12 +94,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String valor = cajaNum.getText().toString();
                 int octal = Integer.parseInt(valor);
                 if(validarOctal(octal) == true){
-
+                    int decimal = convertirOctalADecimal(octal);
+                    cajaBin.setText(convertirDecimalABinario(decimal));
+                }else{
+                    Toast.makeText(this, "ERROR! No es Octal", Toast.LENGTH_LONG).show();
+                }
+            }else if(cbOct.isChecked()){
+                String valor = cajaNum.getText().toString();
+                int octal = Integer.parseInt(valor);
+                if(validarOctal(octal) == true){
+                    cajaOct.setText(valor);
+                }else{
+                    Toast.makeText(this, "ERROR! No es Octal", Toast.LENGTH_LONG).show();
+                }
+            }else if(cbHex.isChecked()){
+                String valor = cajaNum.getText().toString();
+                int octal = Integer.parseInt(valor);
+                if(validarOctal(octal) == true){
+                    int decimal = convertirOctalADecimal(octal);
+                    cajaHex.setText(convertirDecimalAHexadecimal(decimal));
                 }else{
                     Toast.makeText(this, "ERROR! No es Octal", Toast.LENGTH_LONG).show();
                 }
             }
 
+        }else if(radioH.isChecked()){
+            
         }
 
     }
@@ -125,9 +147,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return true;
     }
 
-    public String convertirDecimalaBinario(){
-        long decimal = Long.parseLong(cajaNum.getText().toString());
-        return(Long.toBinaryString(decimal));
+    public String convertirDecimalABinario(int decimal) {
+        String binario = "";
+        while (decimal > 0) {
+            binario = decimal % 2 + binario;
+            decimal = decimal / 2;
+        }
+        return binario;
     }
 
     public String convertirDecimalOctal(int decimal){
