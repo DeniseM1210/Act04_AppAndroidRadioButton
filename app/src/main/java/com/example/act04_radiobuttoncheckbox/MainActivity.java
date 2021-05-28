@@ -42,14 +42,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if(radioD.isChecked()){
             if(cbBin.isChecked()){
-                if(cajaNum.getText().equals("")){
-                    Toast.makeText(this, "ERROR!", Toast.LENGTH_LONG).show();
-                }else{
-                    String valor = cajaNum.getText().toString();
-                    int decimal = Integer.parseInt(valor);
-                    cajaBin.setText(convertirDecimalABinario(decimal));
-                }
+                String valor = cajaNum.getText().toString();
+                int decimal = Integer.parseInt(valor);
 
+                cajaBin.setText(convertirDecimalABinario(decimal));
             }else if(cbOct.isChecked()){
                String valor = cajaNum.getText().toString();
                int decimal = Integer.parseInt(valor);

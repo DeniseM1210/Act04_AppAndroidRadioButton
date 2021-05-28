@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">Act04_RadioButtonCheckBox</string>
+    <string name="txt_Conversor">Conversor</string>
+    <string name="txt_RadioDecimal">Decimal</string>
+    <string name="txt_RadioBinario">Binario</string>
+    <string name="txt_RadioOctal">Octal</string>
+    <string name="txt_RadioHexadecimal">Hexadecimal</string>
+    <string name="txt_Numero">Ingresa un numero: </string>
+    <string name="txt_cajaNum"></string>
+    <string name="txt_CbBinario">Binario</string>
+    <string name="txt_CbOctal">Octal</string>
+    <string name="txt_CbHexadecimal">Hexadecimal</string>
+    <string name="txt_cajaBin"></string>
+    <string name="txt_cajaOct"></string>
+    <string name="txt_cajaHex"></string>
+
 </resources>
