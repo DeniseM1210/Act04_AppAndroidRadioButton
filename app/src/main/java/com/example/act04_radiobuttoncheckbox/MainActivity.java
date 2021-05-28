@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
 
         }else if(radioH.isChecked()){
-            
+
         }
 
     }
@@ -141,6 +141,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         for (int i = 0; i < octalComoCadena.length(); i++) {
             char caracter = octalComoCadena.charAt(i);
             if (caracteresOctales.indexOf(caracter) == -1) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean validarHexadecimal(String hexadecimal){
+        String caracteresHexadecimales = "0123456789ABCDEF";
+        for (int i = 0; i < hexadecimal.length(); i++){
+            char caracter = hexadecimal.charAt(i);
+
+            if(caracteresHexadecimales.indexOf(caracter) == -1){
                 return false;
             }
         }
