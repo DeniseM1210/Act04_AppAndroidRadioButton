@@ -87,6 +87,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Toast.makeText(this, "ERROR! No es Binario", Toast.LENGTH_LONG).show();
                 }
             }
+        }else if(radioO.isChecked()){
+            if(cbBin.isChecked()){
+                String valor = cajaNum.getText().toString();
+                int octal = Integer.parseInt(valor);
+                if(validarOctal(octal) == true){
+
+                }else{
+                    Toast.makeText(this, "ERROR! No es Octal", Toast.LENGTH_LONG).show();
+                }
+            }
+
         }
 
     }
@@ -96,6 +107,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         for (int i = 0; i < binarioComoCadena.length(); i++) {
             char caracter = binarioComoCadena.charAt(i);
             if (caracter != '0' && caracter != '1') {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean validarOctal(int octal) {
+        String octalComoCadena = String.valueOf(octal);
+        String caracteresOctales = "01234567";
+        for (int i = 0; i < octalComoCadena.length(); i++) {
+            char caracter = octalComoCadena.charAt(i);
+            if (caracteresOctales.indexOf(caracter) == -1) {
                 return false;
             }
         }
@@ -145,6 +168,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return decimal;
     }
 
+    public static int convertirOctalADecimal(int octal) {
+        int decimal = 0;
+        int potencia = 0;
+        while (true) {
+            if (octal == 0) {
+                break;
+            } else {
+                int temp = octal % 10;
+                decimal += temp * Math.pow(8, potencia);
+                octal = octal / 10;
+                potencia++;
+            }
+        }
+        return decimal;
+    }
 
 
 
