@@ -72,20 +72,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String valor = cajaNum.getText().toString();
                 int binario = Integer.parseInt(valor);
                 if(validarBinario(binario) == true){
-                    cajaBin.setText(valor);
+                    int decimal = convertirBinarioADecimal(binario);
+                    cajaOct.setText(convertirDecimalOctal(decimal));
+                }else{
+                    Toast.makeText(this, "ERROR! No es Binario", Toast.LENGTH_LONG).show();
+                }
+            }else if(cbHex.isChecked()){
+                String valor = cajaNum.getText().toString();
+                int binario = Integer.parseInt(valor);
+                if(validarBinario(binario) == true){
+                    int decimal = convertirBinarioADecimal(binario);
+                    cajaHex.setText(convertirDecimalAHexadecimal(decimal));
                 }else{
                     Toast.makeText(this, "ERROR! No es Binario", Toast.LENGTH_LONG).show();
                 }
             }
-
-
-
         }
 
     }
 
     public static boolean validarBinario(int binario) {
-        // Comprobar si solo se compone de unos y ceros
         String binarioComoCadena = String.valueOf(binario);
         for (int i = 0; i < binarioComoCadena.length(); i++) {
             char caracter = binarioComoCadena.charAt(i);
@@ -112,9 +118,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return octal;
     }
 
-    public static String convertirDecimalAHexadecimal(int decimal) {
+    public String convertirDecimalAHexadecimal(int decimal) {
         String hexadecimal = "";
-        String caracteresHexadecimales = "0123456789abcdef";
+        String caracteresHexadecimales = "0123456789ABCDEF";
         while (decimal > 0) {
             int residuo = decimal % 16;
             hexadecimal = caracteresHexadecimales.charAt(residuo) + hexadecimal;
@@ -122,6 +128,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         return hexadecimal;
     }
+
+    public static int convertirBinarioADecimal(int binario) {
+        int decimal = 0;
+        int potencia = 0;
+        while (true) {
+            if (binario == 0) {
+                break;
+            } else {
+                int temp = binario % 10;
+                decimal += temp * Math.pow(2, potencia);
+                binario = binario / 10;
+                potencia++;
+            }
+        }
+        return decimal;
+    }
+
+
 
 
 
