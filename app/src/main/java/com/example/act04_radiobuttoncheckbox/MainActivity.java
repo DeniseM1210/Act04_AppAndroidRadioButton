@@ -119,7 +119,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
 
         }else if(radioH.isChecked()){
-
+            if(cbBin.isChecked()){
+                String valor = cajaNum.getText().toString();
+                if(validarHexadecimal(valor) == true){
+                    int decimal = convertirHexadecimalADecimal(valor);
+                    cajaBin.setText(convertirDecimalABinario(decimal));
+                }else{
+                    Toast.makeText(this, "ERROR! No es Hexadecimal", Toast.LENGTH_LONG).show();
+                }
+            }else if(cbOct.isChecked()){
+                String valor = cajaNum.getText().toString();
+                if(validarHexadecimal(valor) == true){
+                    int decimal = convertirHexadecimalADecimal(valor);
+                    cajaOct.setText(convertirDecimalOctal(decimal));
+                }else{
+                    Toast.makeText(this, "ERROR! No es Hexadecimal", Toast.LENGTH_LONG).show();
+                }
+            }else if(cbHex.isChecked()){
+                String valor = cajaNum.getText().toString();
+                if(validarHexadecimal(valor) == true){
+                    cajaHex.setText(cajaNum.getText().toString());
+                }else{
+                    Toast.makeText(this, "ERROR! No es Hexadecimal", Toast.LENGTH_LONG).show();
+                }
+            }
         }
 
     }
@@ -219,6 +242,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 potencia++;
             }
         }
+        return decimal;
+    }
+
+    public int convertirHexadecimalADecimal(String hexadecimal){
+        String caracteresHexadecimales = "0123456789ABCDEF";
+        hexadecimal = hexadecimal.toUpperCase();
+        int decimal = 0;
+        for (int i = 0; i < hexadecimal.length(); i++){
+            char caracter = hexadecimal.charAt(i);
+            int posicionEnCaracteres = caracteresHexadecimales.indexOf(caracter);
+            decimal = 16 * decimal + posicionEnCaracteres;
+        }
+
         return decimal;
     }
 
